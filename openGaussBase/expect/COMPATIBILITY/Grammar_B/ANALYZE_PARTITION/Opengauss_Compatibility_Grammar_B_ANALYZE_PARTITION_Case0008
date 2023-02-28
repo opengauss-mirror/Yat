@@ -1,0 +1,143 @@
+-- @testpoint: 验证间隔分区表analyze分区语法(指定表空间)，部分场景合理报错
+drop tablespace if exists ts_b_analyze_par_0008;
+SQL SUCCESS
+create tablespace ts_b_analyze_par_0008 relative location 'ts_b_analyze_par_0008';
+SQL SUCCESS
+drop table if exists t_b_analyze_par_0008;
+SQL SUCCESS
+create table t_b_analyze_par_0008(c1 int primary key,c2 timestamp)
+tablespace ts_b_analyze_par_0008
+partition by range(c2)
+interval('1 day')
+(
+  partition p1 values less than ('1990-01-01 00:00:00'),
+  partition p2 values less than ('1990-01-02 00:00:00'),
+  partition p3 values less than ('1990-01-03 00:00:00'),
+  partition p4 values less than ('1990-01-04 00:00:00'),
+  partition p5 values less than ('1990-01-05 00:00:00'),
+  partition p6 values less than ('1990-01-06 00:00:00'),
+  partition p7 values less than ('1990-01-07 00:00:00'),
+  partition p8 values less than ('1990-01-08 00:00:00'),
+  partition p9 values less than ('1990-01-09 00:00:00'),
+  partition p10 values less than ('1990-01-10 00:00:00')
+) ;
+SQL SUCCESS
+create index i_b_analyze_par_0008_1 on t_b_analyze_par_0008 (c1) global;
+SQL SUCCESS
+create index i_b_analyze_par_0008_2 on t_b_analyze_par_0008 (c2) local;
+SQL SUCCESS
+insert into t_b_analyze_par_0008 values
+  (1,'1990-01-01 00:00:00'),
+  (2,'1990-01-02 00:00:00'),
+  (3,'1990-01-03 00:00:00'),
+  (4,'1990-01-04 00:00:00'),
+  (5,'1990-01-05 00:00:00');
+SQL SUCCESS
+select relname,boundaries from pg_partition where parentid in (select oid from pg_class where relname = 't_b_analyze_par_0008') order by relname;
++----------------------+--------------------------+
+| relname              | boundaries               |
++----------------------+--------------------------+
+| p1                   | {1990-01-01 00:00:00+08} |
+| p10                  | {1990-01-10 00:00:00+08} |
+| p2                   | {1990-01-02 00:00:00+08} |
+| p3                   | {1990-01-03 00:00:00+08} |
+| p4                   | {1990-01-04 00:00:00+08} |
+| p5                   | {1990-01-05 00:00:00+08} |
+| p6                   | {1990-01-06 00:00:00+08} |
+| p7                   | {1990-01-07 00:00:00+08} |
+| p8                   | {1990-01-08 00:00:00+08} |
+| p9                   | {1990-01-09 00:00:00+08} |
+| t_b_analyze_par_0008 |                          |
++----------------------+--------------------------+
+-- analyze一个分区，验证成功
+alter table t_b_analyze_par_0008 analyze partition p2;
++----------------------+
+| analyze_partition    |
++----------------------+
+| t_b_analyze_par_0008 |
++----------------------+
+select * from t_b_analyze_par_0008 partition(p2) order by c1;
++----+-------------------------------+
+| c1 | c2                            |
++----+-------------------------------+
+| 1  | 1990-01-01 00:00:00.000000000 |
++----+-------------------------------+
+-- analyze多个分区，验证成功
+alter table t_b_analyze_par_0008 analyze partition p3,p4;
++----------------------+
+| analyze_partition    |
++----------------------+
+| t_b_analyze_par_0008 |
++----------------------+
+select * from t_b_analyze_par_0008 partition(p3) order by c1;
++----+-------------------------------+
+| c1 | c2                            |
++----+-------------------------------+
+| 2  | 1990-01-02 00:00:00.000000000 |
++----+-------------------------------+
+select * from t_b_analyze_par_0008 partition(p4) order by c1;
++----+-------------------------------+
+| c1 | c2                            |
++----+-------------------------------+
+| 3  | 1990-01-03 00:00:00.000000000 |
++----+-------------------------------+
+-- analyze所有分区，验证成功
+alter table t_b_analyze_par_0008 analyze partition all;
+SQL SUCCESS
+select * from t_b_analyze_par_0008 order by c1;
++----+-------------------------------+
+| c1 | c2                            |
++----+-------------------------------+
+| 1  | 1990-01-01 00:00:00.000000000 |
+| 2  | 1990-01-02 00:00:00.000000000 |
+| 3  | 1990-01-03 00:00:00.000000000 |
+| 4  | 1990-01-04 00:00:00.000000000 |
+| 5  | 1990-01-05 00:00:00.000000000 |
++----+-------------------------------+
+-- analyze无数据分区，验证成功
+alter table t_b_analyze_par_0008 analyze partition p10;
++----------------------+
+| analyze_partition    |
++----------------------+
+| t_b_analyze_par_0008 |
++----------------------+
+select * from t_b_analyze_par_0008 partition(p10) order by c1;
++----+----+
+| c1 | c2 |
++----+----+
++----+----+
+-- analyze不存在分区，合理报错
+alter table t_b_analyze_par_0008 analyze partition pnull;
+?.*ERROR: partition "pnull" of relation "t_b_analyze_par_0008" does not exist
+  Where: referenced column: analyze_partition
+select * from t_b_analyze_par_0008 order by c1;
++----+-------------------------------+
+| c1 | c2                            |
++----+-------------------------------+
+| 1  | 1990-01-01 00:00:00.000000000 |
+| 2  | 1990-01-02 00:00:00.000000000 |
+| 3  | 1990-01-03 00:00:00.000000000 |
+| 4  | 1990-01-04 00:00:00.000000000 |
+| 5  | 1990-01-05 00:00:00.000000000 |
++----+-------------------------------+
+select relname,boundaries from pg_partition where parentid in (select oid from pg_class where relname = 't_b_analyze_par_0008') order by relname;
++----------------------+--------------------------+
+| relname              | boundaries               |
++----------------------+--------------------------+
+| p1                   | {1990-01-01 00:00:00+08} |
+| p10                  | {1990-01-10 00:00:00+08} |
+| p2                   | {1990-01-02 00:00:00+08} |
+| p3                   | {1990-01-03 00:00:00+08} |
+| p4                   | {1990-01-04 00:00:00+08} |
+| p5                   | {1990-01-05 00:00:00+08} |
+| p6                   | {1990-01-06 00:00:00+08} |
+| p7                   | {1990-01-07 00:00:00+08} |
+| p8                   | {1990-01-08 00:00:00+08} |
+| p9                   | {1990-01-09 00:00:00+08} |
+| t_b_analyze_par_0008 |                          |
++----------------------+--------------------------+
+-- 清理环境
+drop table t_b_analyze_par_0008;
+SQL SUCCESS
+drop tablespace ts_b_analyze_par_0008;
+SQL SUCCESS
