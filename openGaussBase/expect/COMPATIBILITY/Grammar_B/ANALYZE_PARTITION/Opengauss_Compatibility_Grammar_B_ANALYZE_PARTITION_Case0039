@@ -1,0 +1,151 @@
+-- @testpoint: 验证list-list分区表analyze分区语法，部分场景合理报错
+drop table if exists t_b_analyze_par_0039;
+SQL SUCCESS
+create table t_b_analyze_par_0039(c1 char(1),c2 int,c3 int primary key)
+partition by list(c1) subpartition by list(c2) 
+(
+  partition p1 values ('a','b')
+  (
+    subpartition p1_1 values (1),
+    subpartition p1_2 values (2)
+  ),
+  partition p2 values ('c','d')
+  (
+    subpartition p2_1 values (3),
+    subpartition p2_2 values (4)
+  ),
+  partition p3 values ('e','f')
+  (
+    subpartition p3_1 values (5),
+    subpartition p3_2 values (6)
+  )
+);
+SQL SUCCESS
+create index i_b_analyze_par_0039_1 on t_b_analyze_par_0039 (c1) global;
+SQL SUCCESS
+create index i_b_analyze_par_0039_2 on t_b_analyze_par_0039 (c2) local;
+SQL SUCCESS
+insert into t_b_analyze_par_0039 values
+  ('a',1,1),
+  ('b',2,2),
+  ('c',3,3),
+  ('d',4,4);
+SQL SUCCESS
+select relname,boundaries,parttype from pg_partition where parentid in (select parentid from pg_partition where relname = 't_b_analyze_par_0039') or parentid in (select oid from pg_partition where parentid in (select parentid from pg_partition where relname = 't_b_analyze_par_0039')) order by relname;
++----------------------+------------+----------+
+| relname              | boundaries | parttype |
++----------------------+------------+----------+
+| p1                   | {a,b}      | p        |
+| p1_1                 | {1}        | s        |
+| p1_2                 | {2}        | s        |
+| p2                   | {c,d}      | p        |
+| p2_1                 | {3}        | s        |
+| p2_2                 | {4}        | s        |
+| p3                   | {e,f}      | p        |
+| p3_1                 | {5}        | s        |
+| p3_2                 | {6}        | s        |
+| t_b_analyze_par_0039 |            | r        |
++----------------------+------------+----------+
+-- analyze一个分区，验证成功
+alter table t_b_analyze_par_0039 analyze partition p1;
++----------------------+
+| analyze_partition    |
++----------------------+
+| t_b_analyze_par_0039 |
++----------------------+
+select * from t_b_analyze_par_0039 partition(p1) order by c1;
++----+----+----+
+| c1 | c2 | c3 |
++----+----+----+
+| a  | 1  | 1  |
+| b  | 2  | 2  |
++----+----+----+
+-- analyze多个分区，验证成功
+alter table t_b_analyze_par_0039 analyze partition p1,p2;
++----------------------+
+| analyze_partition    |
++----------------------+
+| t_b_analyze_par_0039 |
++----------------------+
+select * from t_b_analyze_par_0039 partition(p1) order by c1;
++----+----+----+
+| c1 | c2 | c3 |
++----+----+----+
+| a  | 1  | 1  |
+| b  | 2  | 2  |
++----+----+----+
+select * from t_b_analyze_par_0039 partition(p2) order by c1;
++----+----+----+
+| c1 | c2 | c3 |
++----+----+----+
+| c  | 3  | 3  |
+| d  | 4  | 4  |
++----+----+----+
+-- analyze所有分区，验证成功
+alter table t_b_analyze_par_0039 analyze partition all;
+SQL SUCCESS
+select * from t_b_analyze_par_0039 order by c1;
++----+----+----+
+| c1 | c2 | c3 |
++----+----+----+
+| a  | 1  | 1  |
+| b  | 2  | 2  |
+| c  | 3  | 3  |
+| d  | 4  | 4  |
++----+----+----+
+-- analyze无数据分区，验证成功
+alter table t_b_analyze_par_0039 analyze partition p3;
++----------------------+
+| analyze_partition    |
++----------------------+
+| t_b_analyze_par_0039 |
++----------------------+
+select * from t_b_analyze_par_0039 partition(p3) order by c1;
++----+----+----+
+| c1 | c2 | c3 |
++----+----+----+
++----+----+----+
+-- analyze不存在分区，合理报错
+alter table t_b_analyze_par_0039 analyze partition pnull;
+?.*ERROR: The partition pnull can't be found in table t_b_analyze_par_0039
+  Where: referenced column: analyze_partition
+-- analyze二级分区，合理报错
+alter table t_b_analyze_par_0039 analyze partition p1_1;
+?.*ERROR: The partition p1_1 can't be found in table t_b_analyze_par_0039
+  Where: referenced column: analyze_partition
+alter table t_b_analyze_par_0039 analyze subpartition p1_1;
+?.*ERROR: syntax error at or near "subpartition p1_1"
+?.*Position.*
+alter table t_b_analyze_par_0039 analyze subpartition p1_1,p1_2;
+?.*ERROR: syntax error at or near "subpartition p1_1"
+?.*Position.*
+alter table t_b_analyze_par_0039 analyze subpartition all;
+?.*ERROR: syntax error at or near "subpartition all"
+?.*Position.*
+select * from t_b_analyze_par_0039 order by c1;
++----+----+----+
+| c1 | c2 | c3 |
++----+----+----+
+| a  | 1  | 1  |
+| b  | 2  | 2  |
+| c  | 3  | 3  |
+| d  | 4  | 4  |
++----+----+----+
+select relname,boundaries,parttype from pg_partition where parentid in (select parentid from pg_partition where relname = 't_b_analyze_par_0039') or parentid in (select oid from pg_partition where parentid in (select parentid from pg_partition where relname = 't_b_analyze_par_0039')) order by relname;
++----------------------+------------+----------+
+| relname              | boundaries | parttype |
++----------------------+------------+----------+
+| p1                   | {a,b}      | p        |
+| p1_1                 | {1}        | s        |
+| p1_2                 | {2}        | s        |
+| p2                   | {c,d}      | p        |
+| p2_1                 | {3}        | s        |
+| p2_2                 | {4}        | s        |
+| p3                   | {e,f}      | p        |
+| p3_1                 | {5}        | s        |
+| p3_2                 | {6}        | s        |
+| t_b_analyze_par_0039 |            | r        |
++----------------------+------------+----------+
+-- 清理环境
+drop table t_b_analyze_par_0039;
+SQL SUCCESS
