@@ -11,6 +11,7 @@ SELECT  sqrt(4>3) AS RESULT;
 +-------------------+
 | result            |
 +-------------------+
+| 1.000000000000000 |
 +-------------------+
 SELECT  sqrt(4.00,0) AS RESULT;
 ?.*ERROR: function sqrt\(numeric, integer\) does not exist

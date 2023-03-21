@@ -9,6 +9,9 @@ select id from tb order by rpad(name,15,'3');
 +----------+
 | id       |
 +----------+
+| 00001123 |
+| 00001125 |
+| 00001128 |
 +----------+
 drop table tb;
 SQL SUCCESS
