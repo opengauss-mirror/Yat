@@ -22,6 +22,7 @@ insert into partition_table_001 values (1,'aaa',1,'2020-02-23',true,'aaa',1.1);
 SQL SUCCESS
 insert into partition_table_001 values (2,'bbb',2,null,false,'bbb',2.2);
 ?.*ERROR: null value in column "col_4" violates not-null constraint
+  Detail: Failing row contains (2, bbb                           , 2, null, f, bbb                           , 2.20000000000000018).
 insert into partition_table_001 values (3,'ccc',3,'',true,'ccc',3.3);
 ?.*ERROR: null value in column "col_4" violates not-null constraint
   Detail: Failing row contains (3, ccc                           , 3, null, t, ccc                           , 3.29999999999999982).

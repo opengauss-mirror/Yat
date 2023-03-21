@@ -21,13 +21,13 @@ create table pstudent_table_06
 insert into pteacher_table_06 values (date '2020-09-01', date '2020-09-01', '张老师');
 insert into pteacher_table_06 values (date '2020-09-02', date '2020-09-02', '李老师');
 insert into pteacher_table_06 values (date '2020-09-03', date '2020-09-03', '陈老师');
---测试插入情况，只有主键全部字段都存在才能成功插入
---应当插入应当执行成功
+--测试插入情况
+--以下插入应当执行成功
 insert into pstudent_table_06 values (date '2020-09-01', '王二', date '2020-09-01', date '2020-09-01');
 insert into pstudent_table_06 values (date '2020-09-02', '张三', date '2020-09-02', date '2020-09-02');
 insert into pstudent_table_06 values (date '2020-09-03', '吴五', date '2020-09-03', null);
 select * from pstudent_table_06;
---外键约束中加入match full限制
+--外键约束中加入match full限制，只有主键全部字段都存在才能成功插入
 delete from pstudent_table_06 where s_date = date '2020-09-03';
 alter table pstudent_table_06 drop constraint FK_pstudent_table_06_1;
 alter table pstudent_table_06 add constraint FK_pstudent_table_06_2 FOREIGN KEY (t_date, t_day) REFERENCES pteacher_table_06 MATCH FULL on update cascade on delete set null;

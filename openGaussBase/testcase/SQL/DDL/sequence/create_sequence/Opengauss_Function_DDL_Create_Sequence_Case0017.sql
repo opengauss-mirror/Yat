@@ -1,4 +1,4 @@
---  @testpoint:generate_series函数测试
+-- @testpoint:generate_series函数测试，部分测试点合理报错
 --testpoint1:generate_series(start, stop)函数，start, stop都为int型
 SELECT * FROM generate_series(2,4);
 --generate_series(start, stop)函数，start, stop都为numeric型

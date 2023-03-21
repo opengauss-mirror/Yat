@@ -28,14 +28,14 @@ end p_test_0002;
 SQL SUCCESS
 --step4:查询系统表gs_package中p_test_0002对应的包规格内容 expect:返回重新声明的包规格内容
 select pkgspecsrc from gs_package where pkgname = 'p_test_0002';
-+--------------------------------------------------------------------------+
-| pkgspecsrc                                                               |
-+--------------------------------------------------------------------------+
+?.*
+?.*| pkgspecsrc*
+?.*
 |  PACKAGE  DECLARE 
 var3 int:=1;
 procedure p_package_0002(var4 int);
 end  |
-+--------------------------------------------------------------------------+
+?.*
 --step5:调用package expect:合理报错
 call p_test_0002.p_package_0002();
 ?.*ERROR: function "p_package_0002" with 0 parameters doesn't exist.*
