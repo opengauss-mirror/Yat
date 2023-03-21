@@ -1,5 +1,3 @@
-
-
 -- @testpoint: 15.创建与系统函数char()相同名字的自定义函数,分别加用户名与不加用户名调用
 
 drop user if exists self_func_042 CASCADE;
@@ -18,6 +16,7 @@ select add_months('2019-03-01',1) from sys_dummy;
 +-------------------------------+
 | add_months                    |
 +-------------------------------+
+| 2019-04-01 00:00:00.000000000 |
 +-------------------------------+
 select self_func_042.add_months(11) from sys_dummy;
 +------------+

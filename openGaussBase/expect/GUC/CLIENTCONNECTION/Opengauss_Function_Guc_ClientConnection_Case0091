@@ -4,6 +4,7 @@ show vacuum_freeze_min_age;
 +-----------------------+
 | vacuum_freeze_min_age |
 +-----------------------+
+| 2000000000            |
 +-----------------------+
 --设置，报错
 alter system set vacuum_freeze_min_age to 52002333;
