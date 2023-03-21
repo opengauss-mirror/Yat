@@ -4,7 +4,6 @@ drop table if exists hint_index_00000;
 create table hint_index_00000(
 c_id int, c_int int, c_integer integer, c_bool bool, c_boolean boolean, c_bigint bigint,
 c_real real,
-
 c_decimal decimal(38), c_number number(38), c_numeric numeric(38),
 c_char char(50) default null, c_varchar varchar(20), c_varchar2 varchar2(4000),
 c_date date
@@ -32,7 +31,7 @@ insert into hint_index_00000 values ( 31, 1000, 500000, 1, 0, 1221525504, 20000,
 
 create index hint_index_00000_idx1 on hint_index_00000(c_integer) local ;
 alter table hint_index_00000 add constraint hint_unique1 unique (c_integer,c_id);
-
+alter table hint_index_00000 add constraint hint_unique2 CHECK (c_id>30);
 
 create view hint_index_000000 as select c_integer,c_varchar, c_varchar2,c_date from hint_index_00000;
 
