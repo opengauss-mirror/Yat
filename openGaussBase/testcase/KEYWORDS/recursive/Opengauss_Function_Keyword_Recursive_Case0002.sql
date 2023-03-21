@@ -1,4 +1,4 @@
---  @testpoint:openGauss鍏抽敭瀛梤ecursive(闈炰繚鐣?浣滀负鍒楀悕甯﹀弻寮曞彿锛宺ecursive澶у皬鍐欐贩鍚堬紝寤鸿〃鎴愬姛
+--  @testpoint:openGauss关键字recursive(非保留)，作为列名带双引号，recursive大小写混合，建表成功
 
 drop table if exists recursive_test;
 create table recursive_test(
@@ -20,7 +20,7 @@ PARTITION BY RANGE (c_integer)
 select * from recursive_test;
 drop table recursive_test;
 
---openGauss鍏抽敭瀛梤ecursive(闈炰繚鐣?浣滀负鍒楀悕甯﹀弻寮曞彿锛宺ecursive澶у皬鍐欏尮閰嶏紝寤鸿〃鎴愬姛
+--openGauss关键字recursive(非保留)，作为列名带双引号，recursive大小写匹配，建表成功
 drop table if exists recursive_test;
 create table recursive_test(
 	c_id int, c_int int, c_integer integer, c_bool int, c_boolean int, c_bigint integer,

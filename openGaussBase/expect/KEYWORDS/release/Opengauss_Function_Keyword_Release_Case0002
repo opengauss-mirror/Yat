@@ -1,4 +1,4 @@
---  @testpoint:openGauss关键字release(非保�?作为列名带双引号，release大小写混合，建表成功
+--  @testpoint:openGauss关键字release(非保留)，作为列名带双引号，release大小写混合，建表成功
 drop table if exists release_test;
 SQL SUCCESS
 create table release_test(
@@ -24,7 +24,7 @@ select * from release_test;
 +------+-------+-----------+--------+-----------+----------+--------+----------+-----------+----------+-----------+--------+-----------+------------+--------+------------+-------------+---------+
 drop table release_test;
 SQL SUCCESS
---openGauss关键字release(非保�?作为列名带双引号，release大小写匹配，建表成功
+--openGauss关键字release(非保留)，作为列名带双引号，release大小写匹配，建表成功
 drop table if exists release_test;
 SQL SUCCESS
 create table release_test(

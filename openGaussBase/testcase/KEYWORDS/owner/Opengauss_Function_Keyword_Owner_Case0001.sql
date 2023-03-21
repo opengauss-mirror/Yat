@@ -4,7 +4,7 @@ create table Explain_test(
 	c_real real, c_double real,
 	c_decimal decimal(38), c_number number(38), c_numeric numeric(38),
 	c_char char(50) default null, c_varchar varchar(20), c_varchar2 varchar2(4000),
-	c_date date, c_datetime date, c_timestamp timestamp,
+	c_date date, c_datetime date, c_timestamp timestamp
 )
 PARTITION BY RANGE (c_integer)
 (
@@ -13,6 +13,7 @@ PARTITION BY RANGE (c_integer)
 	partition P_20200123 values less than (100000),
 	partition P_max values less than (maxvalue)
 );
+
 select * from Explain_test;
 drop table Explain_test;
 
