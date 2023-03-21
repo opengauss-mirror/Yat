@@ -57,6 +57,7 @@ select hll_hash_any ('a fat cat sat on a mat and ate a fat rat'::tsvector);
 +---------------------+
 | hll_hash_any        |
 +---------------------+
+| 3500753697246689018 |
 +---------------------+
 select hll_hash_any ('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11'::uuid);
 +----------------------+

@@ -20,6 +20,7 @@ select distinct last_day(COL_2) from last_day_t001;
 +-------------------------------+
 | last_day                      |
 +-------------------------------+
+| 2001-09-30 01:00:00.000000000 |
 +-------------------------------+
 drop table last_day_t001 CASCADE;
 SQL SUCCESS
