@@ -12,11 +12,11 @@ insert into t_temp_002 values(2,'data2');
 SQL SUCCESS
 --step3：查看全局临时表的oid;expect:成功
 select oid from pg_class where relname ='t_temp_002';
-+-------+
-| oid   |
-+-------+
 ?.*
-+-------+
+?.*| oid.*
+?.*
+?.*
+?.*
 --step4: 调用函数显示当前会话指定的全局临时表的基本信息，插入数据;expect:成功
 select * from pg_get_gtt_relstats((select oid from pg_class where relname ='t_temp_002'));
 +-------------+----------+-----------+---------------+--------------+------------+

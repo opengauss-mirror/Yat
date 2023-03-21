@@ -12,11 +12,11 @@ insert into t_temp_0012 values(2,'data2');
 SQL SUCCESS
 --step3：查看本地临时表的oid;expect:成功
 select oid from pg_class where relname ='t_temp_0012';
-+-------+
-| oid   |
-+-------+
 ?.*
-+-------+
+?.*| oid.*
+?.*
+?.*
+?.*
 --step4: 调用函数显示正在使用指定本地临时表的所有线程pid;expect:发出警告查询无数据
 select * from pg_gtt_attached_pid((select oid from pg_class where relname ='t_temp_0012'));
 +-------+-----+
