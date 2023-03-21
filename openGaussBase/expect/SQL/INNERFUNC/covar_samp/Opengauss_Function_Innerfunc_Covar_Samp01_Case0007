@@ -29,6 +29,7 @@ select * from T_VAR_SAMP_DEFALUT03 order by 1;
 +--------------------+
 | a                  |
 +--------------------+
+| 19602.000000000015 |
 +--------------------+
 DROP TABLE IF EXISTS T_VAR_SAMP_DEFALUT03;
 SQL SUCCESS
