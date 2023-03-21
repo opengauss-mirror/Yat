@@ -43,7 +43,7 @@ insert into partition_table_001 values (2,default,2,'2017-03-23',false,'bbb',2.2
 insert into partition_table_001 values (3,'ccc',3,'2018-04-23',true,'ccc',3.3);
 insert into partition_table_001 values (4,'ccc',3,'2018-04-23',true,'ccc',3.3);
 -- 验证注释，不会被继承
-select description from pg_description where objoid=(select oid from pg_class where relname=' partition_table_001');
+select description from pg_description where objoid=(select oid from pg_class where relname='partition_table_001');
 -- 验证索引，唯一索引不会被继承
 insert into partition_table_001 values (5,'eee',5,'2020-06-23',true,'eee',5.5);
 insert into partition_table_001 values (6,'fff',6,'2020-06-23',false,'fff',6.6);
