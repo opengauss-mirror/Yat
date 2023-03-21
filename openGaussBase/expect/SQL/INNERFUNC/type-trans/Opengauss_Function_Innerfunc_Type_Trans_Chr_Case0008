@@ -55,5 +55,3 @@ select to_char(timestamp '2020-08-26 14，57，33.23813+08','hh12:mi:ss yy-month
 ?.*ERROR: invalid input syntax for type timestamp: \"2020\-08\-26 14\，57\，33.23813\+08\".*
 ?.*
   Where: referenced column: to_char
-?.*
-  Where: referenced column: to_char
