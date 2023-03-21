@@ -90,12 +90,13 @@ HEXTORAW('DEADBEEF')::varchar,
 ?.*
 ?.*
 ?.*
+?.*
 --test point：显式转换
 explain performance insert into test_cast_0002(c_char) values(cast('t'::varchar as char));
 ?.*
 ?.*QUERY PLAN.*
 ?.*
-?..*
+?.*
 ?.*
 ?.*
 ?.*
@@ -107,3 +108,4 @@ explain performance insert into test_cast_0002(c_char) values(cast('t'::varchar 
 --清理数据
 drop table if exists test_cast_0002 cascade;
 SQL SUCCESS
+

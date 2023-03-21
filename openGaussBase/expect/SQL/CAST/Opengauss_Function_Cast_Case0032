@@ -61,6 +61,7 @@ explain performance select - 32.32::float8;
 ?.*QUERY PLAN.*
 ?.*
 ?.*
+|   Output: (-32.3200000000000003)::double precision                                 |
 ?.*
 ?.*
 ?.*
@@ -135,6 +136,7 @@ explain performance select @ 32.32::float8;
 ?.*QUERY PLAN.*
 ?.*
 ?.*
+|   Output: 32.320000000000000284::double precision                                  |
 ?.*
 ?.*
 ?.*
@@ -378,6 +380,7 @@ explain performance select + 32.32::float8;
 ?.*QUERY PLAN.*
 ?.*
 ?.*
+|   Output: 32.320000000000000284::double precision                                  |
 ?.*
 ?.*
 ?.*

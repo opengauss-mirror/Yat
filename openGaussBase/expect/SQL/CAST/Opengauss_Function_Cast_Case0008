@@ -80,6 +80,7 @@ explain performance insert into test_cast_0008 values(
 ?.*
 ?.*
 ?.*
+?.*
 --test point：显式转换
 explain performance insert into test_cast_0008(c_money) values('52093.89'::numeric::money);
 ?.*
