@@ -13,6 +13,7 @@ select distinct var_samp(col_2),grouping(col_1) from t_nvl_rca_tab group by cube
 +---------------------+----------+
 | var_samp            | grouping |
 +---------------------+----------+
+| 207396.000000000000 | 1        |
 +---------------------+----------+
 drop table if exists t_nvl_rca_tab;
 SQL SUCCESS

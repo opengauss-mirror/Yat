@@ -13,6 +13,7 @@ select case when var_pop(col_1)>var_pop(col_2) then var_pop(col_1) else var_pop(
 +---------------------+
 | var_pop             |
 +---------------------+
+| 138264.000000000000 |
 +---------------------+
 drop table if exists t_nvl_rca_tab;
 SQL SUCCESS

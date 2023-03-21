@@ -11,6 +11,7 @@ select var_pop(col_1) from t_nvl_rca_tab;
 +------------------------+
 | var_pop                |
 +------------------------+
+| 0.99950006250000000000 |
 +------------------------+
 drop table if exists t_nvl_rca_tab;
 SQL SUCCESS
