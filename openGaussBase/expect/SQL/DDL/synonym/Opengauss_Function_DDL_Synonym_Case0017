@@ -104,6 +104,7 @@ select EXP(SYN_FUN_SYN_017_001(EXP(SYN_FUN_SYN_017_002(EXP(SYN_FUN_SYN_017_003(E
 +--------------------+
 | exp                |
 +--------------------+
+| 1.0000000000000000 |
 +--------------------+
 --清理环境
 drop function if exists SYN_FUN_017_001(c int) cascade;

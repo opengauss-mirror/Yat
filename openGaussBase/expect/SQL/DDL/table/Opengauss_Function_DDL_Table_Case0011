@@ -14,6 +14,7 @@ SQL SUCCESS
 --增加列
 alter table table_alter_011 add(c_1 int);
 SQL SUCCESS
+alter table table_alter_011 add(c_2 BLOB);
 SQL SUCCESS
 alter table table_alter_011 add(c_3 VARCHAR(200));
 SQL SUCCESS
@@ -100,6 +101,7 @@ SQL SUCCESS
 --增加列
 alter table table_alter_011 add(c_1 int);
 SQL SUCCESS
+alter table table_alter_011 add(c_2 BLOB);
 SQL SUCCESS
 alter table table_alter_011 add(c_5 date);
 SQL SUCCESS

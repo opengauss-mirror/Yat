@@ -12,6 +12,7 @@ c_date date,c_timestamp timestamp
 
 --增加列
 alter table table_alter_011 add(c_1 int);
+alter table table_alter_011 add(c_2 BLOB);
 alter table table_alter_011 add(c_3 VARCHAR(200));
 alter table table_alter_011 add(c_4 CLOB);
 
@@ -41,6 +42,7 @@ analyze  table_alter_011;
 
 --增加列
 alter table table_alter_011 add(c_1 int);
+alter table table_alter_011 add(c_2 BLOB);
 alter table table_alter_011 add(c_5 date);
 SELECT col_description(a.attrelid,a.attnum) as comment,format_type(a.atttypid,a.atttypmod) as type,a.attname as name, a.attnotnull as notnull
 FROM pg_class as c,pg_attribute as a
