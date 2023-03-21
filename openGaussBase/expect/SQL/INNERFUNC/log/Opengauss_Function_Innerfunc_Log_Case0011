@@ -9,6 +9,7 @@ select COL_LOG_B as RESULT from LOG_007;
 +--------------------+
 | result             |
 +--------------------+
+| 0.5000000000000000 |
 +--------------------+
 drop table if exists LOG_007;
 SQL SUCCESS

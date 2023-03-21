@@ -19,6 +19,7 @@ select pg_catalog.ledger_hist_repair('s_ledger_database_0019', 't_ledger_databas
 +--------------------+
 | ledger_hist_repair |
 +--------------------+
+| 0000000000000000   |
 +--------------------+
 --step4：清理环境;expect:成功
 drop table  s_ledger_database_0019.t_ledger_database_0019;

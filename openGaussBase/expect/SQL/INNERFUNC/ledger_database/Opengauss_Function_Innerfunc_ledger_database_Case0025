@@ -12,6 +12,7 @@ select pg_catalog.ledger_gchain_repair('s_ledger_database_0025', 't_ledger_datab
 +----------------------+
 | ledger_gchain_repair |
 +----------------------+
+| 0000000000000000     |
 +----------------------+
 --step3：清理环境;expect:成功
 drop table s_ledger_database_0025.t_ledger_database_0025;
