@@ -1,4 +1,4 @@
---  @testpoint:openGauss关键字ref(非保留)，作为列名带双引号，ref大小写混合，建表成功
+-- @testpoint:openGauss关键字ref(非保留)，作为列名带双引号，ref大小写混合，建表成功
 
 drop table if exists ref_test;
 create table ref_test(

@@ -1,4 +1,4 @@
---  @testpoint:openGauss关键字release(非保留)，作为列名带双引号，release大小写混合，建表成功
+-- @testpoint:openGauss关键字release(非保留)，作为列名带双引号，release大小写混合，建表成功
 
 drop table if exists release_test;
 create table release_test(

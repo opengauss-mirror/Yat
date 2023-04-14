@@ -1,4 +1,4 @@
---  @testpoint:openGauss关键字referencing(非保留)，作为列名不带双引号，referencing大小写混合，建表成功
+-- @testpoint:openGauss关键字referencing(非保留)，作为列名不带双引号，referencing大小写混合，建表成功
 drop table if exists referencing_test;
 SQL SUCCESS
 create table referencing_test(

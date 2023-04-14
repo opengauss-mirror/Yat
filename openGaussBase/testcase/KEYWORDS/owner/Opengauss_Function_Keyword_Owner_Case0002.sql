@@ -1,3 +1,4 @@
+-- @testpoint:openGauss关键字owner(非保留),作为列名带双引号，owner大小匹配，建表成功
 drop table if exists Explain_test;
 create table Explain_test(
 	c_id int, c_int int, c_integer integer, c_bool int, c_boolean int, c_bigint integer,
@@ -17,7 +18,6 @@ PARTITION BY RANGE (c_integer)
 select * from Explain_test;
 drop table Explain_test;
 
---openGauss关键字owner(非保留),作为列名带双引号，owner大小写匹配，建表成功
 drop table if exists Explain_test;
 create table Explain_test(
 	c_id int, c_int int, c_integer integer, c_bool int, c_boolean int, c_bigint integer,

@@ -1,4 +1,4 @@
---  @testpoint:openGauss关键字recursive(非保留)，作为列名带双引号，recursive大小写混合，建表成功
+-- @testpoint:openGauss关键字recursive(非保留)，作为列名带双引号，recursive大小写混合，建表成功
 
 drop table if exists recursive_test;
 create table recursive_test(

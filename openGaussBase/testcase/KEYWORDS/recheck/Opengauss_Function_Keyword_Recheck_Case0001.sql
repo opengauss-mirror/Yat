@@ -1,4 +1,4 @@
---  @testpoint:openGauss关键字recheck(非保留)，作为列名不带双引号，recheck大小写混合，建表成功
+-- @testpoint:openGauss关键字recheck(非保留)，作为列名不带双引号，recheck大小写混合，建表成功
 drop table if exists recheck_test;
 create table recheck_test(
 	c_id int, c_int int, c_integer integer, c_bool int, c_boolean int, c_bigint integer,

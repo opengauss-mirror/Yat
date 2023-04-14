@@ -1,4 +1,4 @@
---  @testpoint:openGauss关键字relative(非保留)，作为列名带双引号，relative大小写混合，建表成功
+-- @testpoint:openGauss关键字relative(非保留)，作为列名带双引号，relative大小写混合，建表成功
 
 drop table if exists relative_test;
 create table relative_test(
