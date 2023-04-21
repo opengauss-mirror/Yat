@@ -40,14 +40,14 @@ end p_test_0003;
 SQL SUCCESS
 --step5:查询系统表gs_package中p_test_0003对应的包规格内容 expect:返回重新声明的包规格内容
 select pkgspecsrc from gs_package where pkgname = 'p_test_0003';
-+--------------------------------------------------------------------------+
-| pkgspecsrc                                                               |
-+--------------------------------------------------------------------------+
+?.*
+?.*| pkgspecsrc*
+?.*
 |  PACKAGE  DECLARE 
 var3 int:=1;
 procedure p_package_0003(var4 int);
 end  |
-+--------------------------------------------------------------------------+
+?.*
 --step6:调用新package expect:调用成功
 call p_test_0003.p_package_0003(3);
 +----------------+
