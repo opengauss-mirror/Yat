@@ -58,6 +58,7 @@ explain performance insert into test_cast_0006 values(point(box('5,5,6,6')),lseg
 ?.*
 ?.*
 ?.*
+?.*
 --清理数据
 drop table if exists test_cast_0006 cascade;
 SQL SUCCESS

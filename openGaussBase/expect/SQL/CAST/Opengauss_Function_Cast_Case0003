@@ -83,6 +83,7 @@ explain performance insert into test_cast_0003 values(
 ?.*
 ?.*
 ?.*
+?.*
 --test point：显式转换
 explain performance insert into test_cast_0003(c_char) values(cast('t'::clob as char));
 ?.*

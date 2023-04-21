@@ -73,6 +73,7 @@ explain performance insert into test_cast_0009 values(
 ?.*
 ?.*
 ?.*
+?.*
 --清理数据
 drop table if exists test_cast_0009 cascade;
 SQL SUCCESS
