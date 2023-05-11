@@ -8,7 +8,7 @@ insert into t_model_tab_0099 values (1,1,1,70),(2,1,1,80),(3,1,1,50),(4,1,0,60),
 --step2: 建表2并插入数据;expect: 建表2并插入数据成功
 drop table if exists t_model_tab1_0099;
 create table t_model_tab1_0099(id integer not null,"position" double precision[] not null,closest_centroid integer not null, l1_distance double precision not null, l2_distance double precision not null,l2_squared_distance double precision not null,linf_distance double precision not null );
-insert into t_model_tab1_0099 values (214,'{82.2331969052000034,52.153098620199998,64.0339866000999933,-.325498639699999981,-64.6012142075999947,81.5499670644999952,59.6012626708999989}',3,10.0679804558999992,4.35061551650000012,18.9278551126999999,2.38415523010000019),
+insert into t_model_tab1_0099 values (214,'{82.2331969052000034,52.153098620199998,64.0339866000999933,-.325498639699999981,-64.6012142075999947,81.5499670644999952,59.6012626708999989}',3,10.0679804558999992,4.35061551650000012,18.9278551126999999,2.38415523010000019);
 
 --step3: 建表3并插入数据;expect: 建表3并插入数据成功
 drop table if exists t_model_tab2_0099;

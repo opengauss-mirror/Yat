@@ -24,6 +24,7 @@ select hyperparametersvalues from gs_model_warehouse where modelname='m_model_km
 ?.*| hyperparametersvalues.*
 ?.*
 ?.*
+?.*
 --step5: 清理环境;expext: 清理成功
 drop table t_model_tab_0048;
 SQL SUCCESS
