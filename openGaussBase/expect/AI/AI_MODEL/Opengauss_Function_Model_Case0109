@@ -15,6 +15,7 @@ select hyperparametersvalues from gs_model_warehouse where modelname = 'm_model_
 ?.*| hyperparametersvalues.*
 ?.*
 ?.*
+?.*
 --step4: 查找系统表;expect: 返回创建model的modelname值m_model_max_seconds_0109
 select modelname from gs_model_warehouse order by modelname;
 +--------------------------+
