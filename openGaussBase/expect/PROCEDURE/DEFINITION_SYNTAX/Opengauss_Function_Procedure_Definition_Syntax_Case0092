@@ -16,6 +16,7 @@ select * from test_procedure_insert_092;
 +--------------------+------+
 | id                 | name |
 +--------------------+------+
+| 3.0000000000000004 | 5    |
 +--------------------+------+
 drop table test_procedure_insert_092;
 SQL SUCCESS

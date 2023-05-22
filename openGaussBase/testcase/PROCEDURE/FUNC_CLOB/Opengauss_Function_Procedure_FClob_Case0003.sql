@@ -5,6 +5,7 @@ create table FVT_FUNC_CLOB_TABLE_003(
   T1 INT,
   T2 TEXT
   );
+insert into FVT_FUNC_CLOB_TABLE_003 values(1,'0101101111');
 
 --创建自定义函数
 create or replace function FVT_FUNC_CLOB_003() return char
