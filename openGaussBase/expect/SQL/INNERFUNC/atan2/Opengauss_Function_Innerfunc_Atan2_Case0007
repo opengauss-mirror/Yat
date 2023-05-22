@@ -1,5 +1,3 @@
-
-
 -- @testpoint: 输入为有效边界值
 
 select atan2(cast(-9223372036854775808 as bigint),tan(cast(9223372036854775807 as bigint))) from sys_dummy;

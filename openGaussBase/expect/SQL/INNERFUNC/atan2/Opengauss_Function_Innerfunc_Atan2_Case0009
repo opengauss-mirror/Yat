@@ -1,5 +1,3 @@
-
-
 -- @testpoint: 结合group by\order by的使用
 drop table if exists atan2_test_01;
 SQL SUCCESS
