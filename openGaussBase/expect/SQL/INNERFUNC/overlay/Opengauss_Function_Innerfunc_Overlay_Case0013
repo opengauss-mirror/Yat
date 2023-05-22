@@ -3,6 +3,7 @@ SELECT overlay(abs('-221423.1') placing 'world' from 2 for 3 );
 +-----------------------+
 | overlay               |
 +-----------------------+
+| 2world23.100000000006 |
 +-----------------------+
 SELECT overlay(acos(-0.9)placing 'world'from 2 for 3);
 +-----------------------+

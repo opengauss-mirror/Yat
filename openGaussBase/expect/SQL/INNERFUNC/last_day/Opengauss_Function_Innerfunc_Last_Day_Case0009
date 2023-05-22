@@ -20,6 +20,7 @@ select distinct last_day(COL_49) from last_day_t001;
 +-------------------------------+
 | last_day                      |
 +-------------------------------+
+| 2020-06-30 10:00:00.000000000 |
 +-------------------------------+
 drop table last_day_t001 CASCADE;
 SQL SUCCESS
