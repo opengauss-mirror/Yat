@@ -1,4 +1,4 @@
---  @testpoint:openGauss关键字ref(非保�?作为列名不带双引号，ref大小写混合，建表成功
+-- @testpoint:openGauss关键字ref(非保留)，作为列名不带双引号，ref大小写混合，建表成功
 drop table if exists ref_test;
 SQL SUCCESS
 create table ref_test(
@@ -24,7 +24,7 @@ select * from ref_test;
 +------+-------+-----------+--------+-----------+----------+--------+----------+-----------+----------+-----------+--------+-----------+------------+--------+------------+-------------+-----+
 drop table ref_test;
 SQL SUCCESS
---openGauss关键字ref(非保�?作为列名不带双引号，ref大小匹配，建表成�?
+--openGauss关键字ref(非保留)，作为列名不带双引号，ref大小写匹配，建表成功
 drop table if exists Collation_Catalog_test;
 SQL SUCCESS
 create table Collation_Catalog_test(

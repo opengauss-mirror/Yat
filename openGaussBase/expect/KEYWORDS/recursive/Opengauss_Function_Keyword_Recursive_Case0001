@@ -1,4 +1,4 @@
---  @testpoint:openGauss关键字recursive(非保�?作为列名不带双引号，recursive大小写混合，建表成功
+-- @testpoint:openGauss关键字recursive(非保留)，作为列名不带双引号，recursive大小写混合，建表成功
 drop table if exists recursive_test;
 SQL SUCCESS
 create table recursive_test(
@@ -24,7 +24,7 @@ select * from recursive_test;
 +------+-------+-----------+--------+-----------+----------+--------+----------+-----------+----------+-----------+--------+-----------+------------+--------+------------+-------------+-----------+
 drop table recursive_test;
 SQL SUCCESS
---openGauss关键字recursive(非保�?作为列名不带双引号，recursive大小匹配，建表成�?
+--openGauss关键字recursive(非保留)，作为列名不带双引号，recursive大小写匹配，建表成功
 drop table if exists Collation_Catalog_test;
 SQL SUCCESS
 create table Collation_Catalog_test(

@@ -1,4 +1,4 @@
---  @testpoint:openGauss鍏抽敭瀛梤elease(闈炰繚鐣?浣滀负鍒楀悕涓嶅甫鍙屽紩鍙凤紝release澶у皬鍐欐贩鍚堬紝寤鸿〃鎴愬姛
+-- @testpoint:openGauss关键字release(非保留)，作为列名不带双引号，release大小写混合，建表成功
 drop table if exists release_test;
 create table release_test(
 	c_id int, c_int int, c_integer integer, c_bool int, c_boolean int, c_bigint integer,
@@ -18,7 +18,7 @@ PARTITION BY RANGE (c_integer)
 select * from release_test;
 drop table release_test;
 
---openGauss鍏抽敭瀛梤elease(闈炰繚鐣?浣滀负鍒楀悕涓嶅甫鍙屽紩鍙凤紝release澶у皬鍖归厤锛屽缓琛ㄦ垚鍔?
+--openGauss关键字release(非保留)，作为列名不带双引号，release大小写匹配，建表成功
 drop table if exists Collation_Catalog_test;
 create table Collation_Catalog_test(
 	c_id int, c_int int, c_integer integer, c_bool int, c_boolean int, c_bigint integer,

@@ -9,6 +9,7 @@ select avg(stu_age) from test_avg_01;
 +---------------------+
 | avg                 |
 +---------------------+
+| 31.0000000000000000 |
 +---------------------+
 drop table if exists test_avg_01;
 SQL SUCCESS
