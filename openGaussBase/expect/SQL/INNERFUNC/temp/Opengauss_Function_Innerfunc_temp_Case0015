@@ -7,11 +7,11 @@ create table t_temp_0015(
 SQL SUCCESS
 --step2：查看全局临时表的oid;expect:成功
 select oid from pg_class where relname ='t_temp_0015';
-+-------+
-| oid   |
-+-------+
 ?.*
-+-------+
+?.*| oid.*
+?.*
+?.*
+?.*
 --step3: 调用函数显示当前会话指定的全局临时表的基本信息，不插入数据;expect:警告查询无数据
 select * from pg_get_gtt_relstats((select oid from pg_class where relname ='t_temp_0015'));
 +-------------+----------+-----------+---------------+--------------+------------+

@@ -12,18 +12,18 @@ insert into t_temp_009 values(2,'data2');
 SQL SUCCESS
 --step3：查看全局临时表的oid;expect:成功
 select oid from pg_class where relname ='t_temp_009';
-+-------+
-| oid   |
-+-------+
 ?.*
-+-------+
+?.*| oid.*
+?.*
+?.*
+?.*
 --step4: 调用函数显示正在使用指定全局临时表的所有线程pid;expect:成功
 select * from pg_gtt_attached_pid((select oid from pg_class where relname ='t_temp_009'));
-+-------+-----------------+
-| relid | pid             |
-+-------+-----------------+
 ?.*
-+-------+-----------------+
+?.*| relid | pid.*
+?.*
+?.*
+?.*
 --step5：清理环境;expect:成功
 drop table t_temp_009;
 SQL SUCCESS
