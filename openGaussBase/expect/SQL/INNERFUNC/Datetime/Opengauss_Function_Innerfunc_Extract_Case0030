@@ -9,14 +9,17 @@ SELECT TIMESTAMP WITHOUT TIME ZONE 'epoch' + 1 * INTERVAL '1 second' AS RESULT;
 +-------------------------------+
 | result                        |
 +-------------------------------+
+| 1970-01-01 00:00:01.000000000 |
 +-------------------------------+
 SELECT TIMESTAMP WITHOUT TIME ZONE 'epoch' + 1.5 * INTERVAL '1 second' AS RESULT;
 +-------------------------------+
 | result                        |
 +-------------------------------+
+| 1970-01-01 00:00:01.500000000 |
 +-------------------------------+
 SELECT TIMESTAMP WITHOUT TIME ZONE 'epoch' + 0 * INTERVAL '1 second' AS RESULT;
 +-------------------------------+
 | result                        |
 +-------------------------------+
+| 1970-01-01 00:00:00.000000000 |
 +-------------------------------+
