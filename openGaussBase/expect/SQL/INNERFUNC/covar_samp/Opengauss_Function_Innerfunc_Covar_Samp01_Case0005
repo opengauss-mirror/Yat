@@ -32,6 +32,7 @@ select covar_samp(COL_2/COL_3/COL_1/COL_3/COL_2/COL_1/COL_3/COL_3/COL_1,COL_1/CO
 +------------------------+
 | covar_samp             |
 +------------------------+
+| 1.0074129861365281E-32 |
 +------------------------+
 --oracle报错，gaussdb能正常运算
 select covar_samp(COL_1+-COL_2-COL_2%COL_3,COL_1+-COL_2-COL_2%COL_3) from T_VAR_POP_SAMP_VARIANCE01 order by 1;

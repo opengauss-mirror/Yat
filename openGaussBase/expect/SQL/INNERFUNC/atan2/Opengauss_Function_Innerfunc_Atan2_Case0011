@@ -1,5 +1,3 @@
-
-
 -- @testpoint: 结合索引的使用测试
 drop table if exists atan2_test_01;
 SQL SUCCESS

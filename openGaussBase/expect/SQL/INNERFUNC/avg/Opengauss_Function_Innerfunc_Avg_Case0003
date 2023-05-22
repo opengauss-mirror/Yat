@@ -1,5 +1,3 @@
-
-
 -- @testpoint: null值
 
 select avg(null) from sys_dummy order by 1;

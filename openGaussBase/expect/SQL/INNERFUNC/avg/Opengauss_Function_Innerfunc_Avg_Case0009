@@ -1,5 +1,3 @@
-
-
 -- @testpoint: count的使用
 drop table if exists test_avg_001;
 SQL SUCCESS
