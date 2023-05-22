@@ -21,5 +21,7 @@ select to_char(timestamp '2020-08-26 14，57，33.23813+08','hh12:mi:ss yy-month
 ?.*ERROR: invalid input syntax for type timestamp: \"2020\-08\-26 14\，57\，33\.23813\+08\"
 ?.*
   Where: referenced column: to_char
+select to_char(timestamp '202008261457332381308','yyy-mon-dd ^&* hh12:mi:ss');
+?.*ERROR: invalid input syntax for type timestamp: "202008261457332381308".*
 ?.*
   Where: referenced column: to_char

@@ -10,3 +10,4 @@ select to_char(pg_systimestamp(), #%&^);
 -- 时间戳错误
 select to_char(timestamp '2020-08-2614:57:33.23813+08','hh12:mi:ss.ms yy-month-dd');
 select to_char(timestamp '2020-08-26 14，57，33.23813+08','hh12:mi:ss yy-month-dd');
+select to_char(timestamp '202008261457332381308','yyy-mon-dd ^&* hh12:mi:ss');
