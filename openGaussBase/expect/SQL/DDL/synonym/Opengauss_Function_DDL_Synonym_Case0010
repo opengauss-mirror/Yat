@@ -80,6 +80,7 @@ select avg(SYN_FUN_SYN_010_001(SYN_FUN_SYN_010_002(SYN_FUN_SYN_010_003(SYN_FUN_S
 +-------------------------+
 | avg                     |
 +-------------------------+
+| -1.00000000000000000000 |
 +-------------------------+
 select SYN_FUN_SYN_010_001(avg(SYN_FUN_SYN_010_002(SYN_FUN_SYN_010_003(SYN_FUN_SYN_010_004(-1))))) from sys_dummy;
 +---------------------+
