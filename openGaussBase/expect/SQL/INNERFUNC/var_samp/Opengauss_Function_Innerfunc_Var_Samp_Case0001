@@ -11,6 +11,7 @@ select var_samp(col_1) from t_nvl_rca_tab;
 +--------------------+
 | var_samp           |
 +--------------------+
+| 1.9990001250000000 |
 +--------------------+
 drop table if exists t_nvl_rca_tab;
 SQL SUCCESS

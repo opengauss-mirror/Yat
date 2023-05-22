@@ -28,6 +28,7 @@ select variance(col_2) from table_test;
 +----------------------+
 | variance             |
 +----------------------+
+| 121.0000000000000000 |
 +----------------------+
 --入参为''/null
 select variance(col_3) from table_test;

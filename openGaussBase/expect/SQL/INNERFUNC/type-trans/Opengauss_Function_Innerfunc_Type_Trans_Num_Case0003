@@ -24,6 +24,7 @@ select to_number('1111ffff2222eeee', 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 +---------------------+
 | to_number           |
 +---------------------+
+| 1230045644503314158 |
 +---------------------+
 -- 字符串拼接
 select to_number('111+222', '999999g99');
