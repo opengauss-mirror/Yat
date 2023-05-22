@@ -19,6 +19,7 @@ select max(time_id) from test1 where cust_id >0 order by 1;
 +-------------------------------+
 | max                           |
 +-------------------------------+
+| 2022-02-05 23:00:59.000000000 |
 +-------------------------------+
 drop table if exists test1;
 SQL SUCCESS

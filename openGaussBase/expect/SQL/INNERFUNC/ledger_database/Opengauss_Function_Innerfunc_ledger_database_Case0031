@@ -12,6 +12,7 @@ select pg_catalog.ledger_gchain_repair('模式名','表名');
 +----------------------+
 | ledger_gchain_repair |
 +----------------------+
+| 0000000000000000     |
 +----------------------+
 --step3：插入数据;expect:成功
 insert into 模式名.表名 values(1, 'alex');

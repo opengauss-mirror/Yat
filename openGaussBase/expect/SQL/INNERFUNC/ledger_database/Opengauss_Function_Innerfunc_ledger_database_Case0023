@@ -16,6 +16,7 @@ select pg_catalog.ledger_hist_repair('模式名','表名');
 +--------------------+
 | ledger_hist_repair |
 +--------------------+
+| 0000000000000000   |
 +--------------------+
 --step4：清理环境;expect:成功
 drop table  模式名.表名;
