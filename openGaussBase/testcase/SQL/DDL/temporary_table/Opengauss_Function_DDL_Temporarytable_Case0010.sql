@@ -23,6 +23,7 @@ c_timestamp timestamp
 )on commit preserve rows;
 --增加列
 alter table temp_table_alter_010 add(c_1 int);
+alter table temp_table_alter_010 add(c_2 BLOB);
 alter table temp_table_alter_010 add(c_3 varchar(200));
 alter table temp_table_alter_010 add(c_4 clob);
 --查询表

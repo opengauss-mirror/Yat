@@ -26,6 +26,7 @@ SQL SUCCESS
 --增加列
 alter table temp_table_alter_010 add(c_1 int);
 SQL SUCCESS
+alter table temp_table_alter_010 add(c_2 BLOB);
 SQL SUCCESS
 alter table temp_table_alter_010 add(c_3 varchar(200));
 SQL SUCCESS
