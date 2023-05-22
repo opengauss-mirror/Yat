@@ -1,10 +1,11 @@
 -- @testpoint: alter system set方法设置参数vacuum_freeze_table_age值，合理报错
 --查询默认
-show vacuum_freeze_min_age;
-+-----------------------+
-| vacuum_freeze_min_age |
-+-----------------------+
-+-----------------------+
+show vacuum_freeze_table_age;
++-------------------------+
+| vacuum_freeze_table_age |
++-------------------------+
+| 4000000000              |
++-------------------------+
 --设置，报错
 alter system set vacuum_freeze_table_age to 52002333;
 ?.*ERROR: unsupport parameter: vacuum_freeze_table_age
